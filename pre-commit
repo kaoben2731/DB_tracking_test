@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "Script run before commit"
+echo "OS in my system : $OSTYPE"
+
+if [[ "$OSTYPE" == "msys" ]]; then
+    python python_dump_DB.py
+elif [[ "$OSTYPE" == "win32" ]]; then
+    python python_dump_DB.py
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    python3 python_dump_DB.py
+fi
+git add python_dump.sql
+
+exit 0
